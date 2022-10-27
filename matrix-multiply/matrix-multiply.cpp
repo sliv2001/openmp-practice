@@ -89,7 +89,7 @@ int multiplyParallel(Matrix a, Matrix b, Matrix c) {
 	if (a.scale != b.scale || b.scale != c.scale)
 		err(-1, "Wrong sizes");
 	int scale = a.scale;
-#pragma omp parallel for
+#pragma omp parallel for simd collapse
 	for (int k = 0; k < scale; k++) {
 		for (int i = 0; i < scale; i++) {
 			int r = a.field[i][k];
