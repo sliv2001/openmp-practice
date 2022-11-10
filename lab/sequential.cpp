@@ -1,11 +1,3 @@
-/*
- * lab.cpp
- *
- *  Created on: 9 нояб. 2022 г.
- *      Author: sladkov.i
- */
-
-
 #include <iostream>
 #include <cstdlib>
 #include <cmath>

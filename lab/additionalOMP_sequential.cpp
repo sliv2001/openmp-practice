@@ -40,9 +40,9 @@ int main(int argc, char** argv){
 			a[i][j]=sin(0.04*b[(i+3)>(ISIZE-1)?ISIZE-1:i+3][j-4<0?0:j-4]);
 		}
 	}
-	cout<<"Time elapsed for parallel: \t"<<omp_get_wtime()-start<<endl;
+	cout<<"Time elapsed: \t"<<omp_get_wtime()-start;
 
-	FILE *ff = fopen("resultOMP_1b.txt", "w");
+	FILE *ff = fopen("resultOMP.txt", "w");
 	if (ff==NULL)
 		return -2;
 	for (int i=0; i<ISIZE; i++){
@@ -50,30 +50,5 @@ int main(int argc, char** argv){
 			fprintf(ff, "%f", a[i][j]);
 		}
 	}
-	fclose(ff);
-
-	for (int i=0; i<ISIZE; i++){
-		for (int j=0; j<JSIZE; j++){
-			a[i][j] = 10*i+j;
-		}
-	}
-
-	start=omp_get_wtime();
-	for (int i=0; i<ISIZE; i++){
-		for (int j=0; j<JSIZE; j++){
-			a[i][j]=sin(0.04*b[(i+3)>(ISIZE-1)?ISIZE-1:i+3][j-4<0?0:j-4]);
-		}
-	}
-	cout<<"Time elapsed for sequential: \t"<<omp_get_wtime()-start<<endl;
-
-	ff = fopen("resultOMP_1b_sequential.txt", "w");
-	if (ff==NULL)
-		return -2;
-	for (int i=0; i<ISIZE; i++){
-		for (int j=0; j<JSIZE; j++){
-			fprintf(ff, "%f", a[i][j]);
-		}
-	}
-	fclose(ff);
 	return 0;
 }

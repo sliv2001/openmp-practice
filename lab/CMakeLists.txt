@@ -14,6 +14,8 @@ endif()
 
 set(COMPILE_OPTIONS ${COMPILE_OPTIONS} OpenMP_CXX_FLAGS)
 
+add_executable(diff diff.cpp)
+
 add_executable(sequential sequential.cpp)
 target_link_libraries(sequential PUBLIC OpenMP::OpenMP_CXX)
 

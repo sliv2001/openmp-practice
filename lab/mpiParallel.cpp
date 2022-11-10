@@ -29,6 +29,9 @@ int main(int argc, char** argv){
 
 	double **a;
 	int istart=(ISIZE/(procs-1))*rank, iend = (ISIZE/(procs-1))*(rank+1);
+	/* Распараллеливание по блокам, а не по строкам позволяет поэкономить
+	 * выделяемую память
+	 */
 	if (rank+1==procs){
 		istart = (ISIZE/(procs-1))*(procs-1);
 		iend = ISIZE;
@@ -49,6 +52,7 @@ int main(int argc, char** argv){
 	}
 	cout<<"Time elapsed: \t"<<MPI_Wtime()-start;
 
+	/*Последовательно с 0 до procs-1 отправка процессом rank в файл */
 	if (rank!=0){
 		MPI_Recv(&ball, 1, MPI_INT, rank-1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 	}
