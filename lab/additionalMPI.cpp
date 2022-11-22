@@ -144,9 +144,7 @@ int main(int argc, char **argv) {
 		}
 	}
 	save1(a);
-
-
-
+	
 	if (rank){
 				MPI_Finalize();
 		return 0;
@@ -164,9 +162,8 @@ int main(int argc, char **argv) {
 			}
 		}
 	}
-		cout<<"Time elapsed for sequential: \t"<<MPI_Wtime()-start<<endl;
+	cout<<"Time elapsed for sequential: \t"<<MPI_Wtime()-start<<endl;
 	save1(a);
-
-		MPI_Finalize();
+	MPI_Finalize();
 	return 0;
 }
